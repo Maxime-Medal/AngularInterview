@@ -1,4 +1,8 @@
 <p>Hello you!</p>
-<ul *ngFor="let book of bookList$ | async">
-    <li>{{book}}</li>
-</ul>
+
+<div *ngIf="bookList$ | async as books; else wait">
+    <ul *ngFor="let book of books">
+        <li>{{book}}</li>
+    </ul>
+</div>
+<ng-template #wait>Please wait ...</ng-template>
