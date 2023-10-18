@@ -1,4 +1,4 @@
 <p>Hello you!</p>
-<ul *ngFor="let book of books">
+<ul *ngFor="let book of bookList$ | async">
     <li>{{book}}</li>
 </ul>
