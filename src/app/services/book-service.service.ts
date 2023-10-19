@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, delay, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  bookList$: Observable<string[]> = of(['📙', '📕', '📗', '📘']).pipe(delay(1000));
+  private bookList: BehaviorSubject<string[]> = new BehaviorSubject(['📙', '📕', '📗', '📘']);
+  public readonly bookList$: Observable<string[]> = this.bookList.asObservable();
 }
