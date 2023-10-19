@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookService } from './services/book-service.service';
+import { Book } from './book.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { BookService } from './services/book-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  bookList$: Observable<string[]> | undefined;
+  bookList$: Observable<Book[]> | undefined;
 
   constructor(
     private _bookServive: BookService
