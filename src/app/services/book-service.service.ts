@@ -15,4 +15,10 @@ export class BookService {
 
   private bookList: BehaviorSubject<Book[]> = new BehaviorSubject(this.defaultBookList);
   public readonly bookList$: Observable<Book[]> = this.bookList.asObservable();
+
+  addBook(book: Book) {
+    let oldBooks = this.bookList.getValue();
+    oldBooks.unshift(book);
+    this.bookList.next(oldBooks);
+  }
 }

@@ -1,0 +1,29 @@
+<p>book-form works!</p>
+<form class="form" [formGroup]="bookForm">
+    <label for="title">Title:
+        <input id="title" formControlName="title">
+    </label>
+
+    <label for="cover">Cover:
+        <input id="cover" formControlName="cover">
+    </label>
+
+    <label for="author_firstname">Firstname:
+        <input id="author_firstname" formControlName="author_firstname">
+    </label>
+
+    <label for="author_lastname">Lastname:
+        <input id="author_lastname" formControlName="author_lastname">
+    </label>
+
+    <label for="pageCount">Page count:
+        <input id="pageCount" type="number" formControlName="pageCount">
+    </label>
+
+    <label for="releaseDate">release date:
+        <input id="releaseDate" formControlName="releaseDate">
+    </label>
+
+    <button class="button" (click)="onSubmit()" [disabled]="!bookForm.valid">Submit</button>
+
+</form>
