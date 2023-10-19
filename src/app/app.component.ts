@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BookService } from './services/book-service.service';
 
 @Component({
@@ -7,17 +7,13 @@ import { BookService } from './services/book-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
-  books: string[] = [];
-  subscriptions: Subscription[] = [];
+export class AppComponent {
+  bookList$: Observable<string[]> | undefined;
 
   constructor(
     private _bookServive: BookService
   ) {
-    this.subscriptions.push(this._bookServive.bookList$.subscribe(books => this.books = books));
+    this.bookList$ = this._bookServive.bookList$;
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.map(sub => sub.unsubscribe())
-  }
 }

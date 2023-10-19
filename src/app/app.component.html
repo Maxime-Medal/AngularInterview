@@ -1,6 +1,6 @@
 <p>Hello you!</p>
 
-<div *ngIf="books.length > 0; else wait">
+<div *ngIf="bookList$ | async as books; else wait">
     <ul *ngFor="let book of books">
         <li>{{book}}</li>
     </ul>
